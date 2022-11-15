@@ -3,7 +3,7 @@
 Clone the repo
 
 ```bash
-  git clone https://gitlab.weborigo.eu/interview-tasks/full-stack/medior/hlaing-min-than.git
+  git clone https://gitlab.weborigo.eu/interview-tasks/full-stack/medior/hlaing-min-than.git weborigo
 ```
 
 Go to the project directory
