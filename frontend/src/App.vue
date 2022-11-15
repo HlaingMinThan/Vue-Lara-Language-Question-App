@@ -36,7 +36,7 @@ export default {
     async getRandomQuestion() {
       try {
         let res = await this.$axios.get(
-          `/questions?correct_question_ids=${JSON.stringify(
+          `/random-question?correct_question_ids=${JSON.stringify(
             this.correct_question_ids
           )}`
         );
