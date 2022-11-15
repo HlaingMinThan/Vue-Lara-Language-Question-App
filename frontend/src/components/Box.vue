@@ -18,8 +18,8 @@
         />
       </div>
       <h1 class="text-3xl">happy</h1>
-      <input type="text" class="w-[60%] shadow-md shadow-[#e28a5067] py-3" />
-      <button class="px-16 py-4 text-white bg-[#FF6700] text-xl rounded-md">
+      <input type="text" class="w-[62%] shadow-md shadow-[#e28a5067] py-4" />
+      <button class="px-24 py-4 md:px-16 text-white bg-[#FF6700] text-xl rounded-md">
         Let's See
       </button>
         </div>
