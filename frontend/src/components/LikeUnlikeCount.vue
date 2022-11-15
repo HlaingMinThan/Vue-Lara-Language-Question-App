@@ -1,6 +1,6 @@
 <template>
   <div
-      class="hidden lg:flex justify-between items-center w-[20%] text-[#FF6700] space-x-4 space-y-2"
+      class="w-full flex justify-between items-center md:w-[20%] text-[#FF6700] space-x-4 space-y-2"
     >
       <div class="flex">
         <svg
