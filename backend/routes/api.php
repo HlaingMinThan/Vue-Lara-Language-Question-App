@@ -25,3 +25,10 @@ Route::get('/questions', function () {
         'question' => Question::whereNotIn('id', $correct_question_ids)->inRandomOrder()->take(1)->first()
     ];
 });
+
+Route::post('/questions/{question}/check-answer', function (Question $question) {
+    $correct_answer = request('random_language') === 'english' ? $question->in_serbian : $question->in_english;
+    return [
+        'correct' => request('answer') === $correct_answer
+    ];
+});

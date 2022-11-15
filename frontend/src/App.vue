@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center h-[100vh] bg-[#FF6700]">
     <Header />
-    <QuestionBox :question="question" />
+    <QuestionBox :question="question" @on-correct="onCorrect" @on-incorrect="getRandomQuestion"/>
   </div>
 </template>
 
@@ -18,10 +18,10 @@ export default {
     }
   },
   methods:{
-    setUserData(){
+    updateLocalStorage(){
       let user = {
         name : window.navigator.userAgent,
-        correct_question_ids : []
+        correct_question_ids : this.correct_question_ids
       }
       window.localStorage.setItem('user',JSON.stringify(user));
     },
@@ -32,10 +32,16 @@ export default {
       } catch(err) {
         console.error(err.message)
       }
+    },
+    onCorrect(id){
+      console.log('hit id',id)
+      this.correct_question_ids.push(id);
+      this.updateLocalStorage();
+      this.getRandomQuestion();
     }
   },
   mounted() {
-    this.setUserData();
+    this.updateLocalStorage();
     this.getRandomQuestion();
   },
 };
