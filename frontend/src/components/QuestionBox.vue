@@ -5,7 +5,7 @@
       p-5
       m-3 rounded-3xl md:w-[80%] md:h-[80%] md:rounded-none  bg-white flex flex-col md:flex-col-reverse"
   >
-    <LikeUnlikeCount />
+    <CorrectIncorrectCount :total_question_counts="total_question_counts" :correct_question_counts="correct_question_counts"/>
     <div  class="
       flex flex-col
       justify-center
@@ -28,11 +28,13 @@
 </template>
 
 <script>
-import LikeUnlikeCount from "./LikeUnlikeCount.vue";
+import CorrectIncorrectCount from "./CorrectIncorrectCount.vue";
 
 export default {
-  components: { LikeUnlikeCount },
+  components: { CorrectIncorrectCount },
   props: {
+    total_question_counts:Number,
+    correct_question_counts:Number,
     question: Object
   },
   data(){
@@ -59,7 +61,6 @@ export default {
   },
   mounted(){
     this.random_language = this.languages[Math.floor(Math.random() * this.languages.length)];
-    console.log('ran',this.random_language)
   }
 };
 </script>

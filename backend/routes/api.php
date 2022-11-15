@@ -25,6 +25,11 @@ Route::get('/questions', function () {
         'question' => Question::whereNotIn('id', $correct_question_ids)->inRandomOrder()->take(1)->first()
     ];
 });
+Route::get('/total-questions-count', function () {
+    return [
+        'total_question_counts' => Question::count()
+    ];
+});
 
 Route::post('/questions/{question}/check-answer', function (Question $question) {
     $correct_answer = request('random_language') === 'english' ? $question->in_serbian : $question->in_english;

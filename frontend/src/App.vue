@@ -2,6 +2,8 @@
   <div class="flex flex-col justify-center items-center h-[100vh] bg-[#FF6700]">
     <Header />
     <QuestionBox
+      :correct_question_counts="correct_question_ids.length"
+      :total_question_counts="total_question_counts"
       :question="question"
       @on-correct="onCorrect"
       @on-incorrect="getRandomQuestion"
@@ -19,6 +21,7 @@ export default {
     return {
       user: JSON.parse(window.localStorage.getItem("user")),
       correct_question_ids: [],
+      total_question_counts: 0,
       question: null,
     };
   },
@@ -53,6 +56,14 @@ export default {
       this.updateLocalStorage();
       this.getRandomQuestion();
     },
+    async getTotalQuestionCounts(){
+       try {
+        let res = await this.$axios.get(`/total-questions-count`);
+        this.total_question_counts = res.data.total_question_counts;
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
   },
   mounted() {
     //set user info if there is no user
@@ -61,6 +72,7 @@ export default {
     } else {
       this.correct_question_ids = this.user.correct_question_ids;
     }
+    this.getTotalQuestionCounts();
     this.getRandomQuestion();
   },
 };
