@@ -21,21 +21,16 @@
     <button class="px-16 py-4 text-white bg-[#FF6700] text-xl rounded-md">
       Let's See
     </button>
-    <div class="flex justify-between w-[20%] text-[#FF6700] space-x-4 space-y-2">
-      <div>
-        <span>like</span>
-        4/20
-      </div>
-      <div>
-        <span>unlike</span>
-        4/20
-      </div>
-    </div>
+    <LikeUnlikeCount/>
   </div>
 </template>
 
 <script>
-export default {};
+import LikeUnlikeCount from './LikeUnlikeCount.vue';
+
+export default {
+  components : { LikeUnlikeCount }
+};
 </script>
 
 <style>
