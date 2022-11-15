@@ -54,6 +54,7 @@ export default {
       }else{
         this.$emit('on-incorrect',this.question.id)
       }
+      this.answer = '';
     }
   },
   mounted(){
