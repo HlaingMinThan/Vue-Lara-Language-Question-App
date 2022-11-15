@@ -1,16 +1,22 @@
 <template>
   <div class="flex flex-col justify-center items-center h-[100vh] bg-[#FF6700]">
     <Header />
-    <Box />
+    <QuestionBox :question="question" />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
-import Box from "./components/Box.vue";
+import QuestionBox from "./components/QuestionBox.vue";
 
 export default {
-  components: { Header, Box },
+  components: { Header, QuestionBox },
+  data(){
+    return{
+      question : null,
+      correct_question_ids : []
+    }
+  },
   methods:{
     setUserData(){
       let user = {
@@ -20,8 +26,12 @@ export default {
       window.localStorage.setItem('user',JSON.stringify(user));
     },
     async getRandomQuestion(){
-      let res = this.$axios.get('/questions');
-      console.log(res)
+      try {
+        let res =await this.$axios.get(`/questions?correct_question_ids=${JSON.stringify(this.correct_question_ids)}`);
+        this.question = res.data.question
+      } catch(err) {
+        console.error(err.message)
+      }
     }
   },
   mounted() {

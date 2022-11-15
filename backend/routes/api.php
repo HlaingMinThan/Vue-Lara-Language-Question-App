@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/api-testing', function () {
+Route::get('/questions', function () {
+    $correct_question_ids = json_decode(request('correct_question_ids'));
     return [
-        'name' => 'web_origo'
+        'question' => Question::whereNotIn('id', $correct_question_ids)->inRandomOrder()->take(1)->first()
     ];
 });
