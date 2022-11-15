@@ -11,10 +11,22 @@ import Box from "./components/Box.vue";
 
 export default {
   components: { Header, Box },
+  methods:{
+    setUserData(){
+      let user = {
+        name : window.navigator.userAgent,
+        correct_question_ids : []
+      }
+      window.localStorage.setItem('user',JSON.stringify(user));
+    },
+    async getRandomQuestion(){
+      let res = this.$axios.get('/questions');
+      console.log(res)
+    }
+  },
   mounted() {
-    this.$axios.get("http://localhost:8000/api/api-testing").then((res) => {
-      console.log(res.data);
-    });
+    this.setUserData();
+    this.getRandomQuestion();
   },
 };
 </script>
