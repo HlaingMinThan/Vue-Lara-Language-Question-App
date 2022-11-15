@@ -21,8 +21,15 @@
     <button class="px-16 py-4 text-white bg-[#FF6700] text-xl rounded-md">
       Let's See
     </button>
-    <div>
-      <img src="image.png" alt="" />
+    <div class="flex justify-between w-[20%] text-[#FF6700] space-x-4 space-y-2">
+      <div>
+        <span>like</span>
+        4/20
+      </div>
+      <div>
+        <span>unlike</span>
+        4/20
+      </div>
     </div>
   </div>
 </template>
