@@ -16,7 +16,7 @@ Go to the project directory
 ## Installation Steps
 
 
-1. Install dependencies with composer and npm
+1. Install dependencies with composer
 
 ```bash
   composer install
