@@ -46,6 +46,8 @@ export default {
   },
   methods : {
     async check_answer(){
+      console.log(this.answer)
+      if(!this.answer) alert('please fill the answer');
       let res =await this.$axios.post(`/questions/${this.question.id}/check-answer` , {
         answer : this.answer,
         random_language : this.random_language

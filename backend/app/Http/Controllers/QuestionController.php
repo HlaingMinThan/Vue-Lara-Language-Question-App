@@ -25,7 +25,7 @@ class QuestionController extends Controller
     {
         $correct_answer = request('random_language') === 'english' ? $question->in_serbian : $question->in_english;
         return [
-            'correct' => request('answer') === $correct_answer
+            'correct' => strtolower(request('answer')) === strtolower($correct_answer)
         ];
     }
 }
