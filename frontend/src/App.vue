@@ -1,13 +1,20 @@
 <template>
-  <h1 class="text-blue-500 flex justify-center text-3xl h-[100vh] items-center">Hello world</h1>
+  <div class="flex flex-col justify-center items-center h-[100vh] bg-[#FF6700]">
+    <Header />
+    <Box />
+  </div>
 </template>
 
 <script>
+import Header from "./components/Header.vue";
+import Box from "./components/Box.vue";
+
 export default {
-  mounted(){
-    this.$axios.get('http://localhost:8000/api/api-testing').then((res)=>{
-      console.log(res.data)
-    })
-  }
-}
+  components: { Header, Box },
+  mounted() {
+    this.$axios.get("http://localhost:8000/api/api-testing").then((res) => {
+      console.log(res.data);
+    });
+  },
+};
 </script>
