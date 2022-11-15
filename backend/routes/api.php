@@ -1,25 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/api-testing', function () {
-    return [
-        'name' => 'web_origo'
-    ];
-});
+Route::get('/random-question', [QuestionController::class, 'get_random_question']);
+Route::get('/total-questions-count', [QuestionController::class, 'get_total_questions_count']);
+Route::post('/questions/{question}/check-answer', [QuestionController::class, 'check_answer']);
